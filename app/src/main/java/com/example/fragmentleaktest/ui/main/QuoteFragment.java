@@ -11,8 +11,13 @@ import android.widget.TextView;
 
 
 import com.example.fragmentleaktest.Quotes;
+import com.example.fragmentleaktest.R;
+
 
 public class QuoteFragment extends Fragment {
+
+    private static TextView quoteText;
+
     /**
      * Create a new instance of QuoteFragment, initialized to
      * show the text at 'index'.
@@ -46,13 +51,15 @@ public class QuoteFragment extends Fragment {
             return null;
         }
 
-        ScrollView scroller = new ScrollView(getActivity());
-        TextView text = new TextView(getActivity());
+        View rootView = inflater.inflate(R.layout.quote_layout, container, false);
+        quoteText = (TextView) rootView.findViewById(R.id.quoteTextView);
+
         int padding = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 4, getActivity().getResources().getDisplayMetrics());
-        text.setPadding(padding, padding, padding, padding);
-        scroller.addView(text);
-        text.setText(Quotes.DIALOGUE[getShownIndex()]);
-        return scroller;
+        quoteText.setPadding(padding, padding, padding, padding);
+        quoteText.setText(Quotes.DIALOGUE[getShownIndex()]);
+        return rootView;
     }
+
+
 }
