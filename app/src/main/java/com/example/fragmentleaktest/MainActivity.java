@@ -1,10 +1,9 @@
 package com.example.fragmentleaktest;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
